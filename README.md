@@ -1,33 +1,48 @@
 # Meld
 
-Meld is the Project 13 MVP for a private, self-hosted collaborative document platform.
+A collaborative document editor that combines the simplicity of rich-text editing with the power of real-time collaboration, version history, and structured review workflows.
 
-## Included in this prototype
+## Features
 
-- Rich-text document editing and browser-local autosave
-- Document navigation and collaborator presence UI
-- Comments, suggestions-mode toggle, and version-history interactions
-- Print/PDF export
-- Responsive desktop, tablet, and mobile layouts
+- **Rich-Text Editing** — Bold, italic, headings, lists, and more with browser-local autosave
+- **Collaborator Presence** — See who else is viewing or editing a document
+- **Comments & Suggestions** — Discuss inline and track changes with suggestion mode
+- **Version History** — Browse, restore, and attribute changes to collaborators
+- **Document Navigation** — Organize with document list and quick search
+- **Export** — Print and PDF export support
+- **Responsive** — Works on all screen sizes
 
-## Run locally
+## Tech Stack
+
+- **Framework:** Next.js 16 (React 19)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS 4
+- **Icons:** Lucide React
+- **Font:** Geist
+
+## Getting Started
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open `http://localhost:3000`.
+Open [http://localhost:3000](http://localhost:3000).
 
-## Production architecture
+## Build
 
-The next implementation phase should split the system into:
+```bash
+npm run build
+npm start
+```
 
-- **Web:** Next.js/TypeScript, a ProseMirror-based editor, and Yjs bindings
-- **Sync service:** Rust with Axum, Tokio, WebSockets, and durable Yjs-compatible updates
-- **API:** Rust/Axum for auth, workspaces, documents, comments, permissions, and exports
-- **Database:** PostgreSQL for metadata, ACLs, comments, and version checkpoints
-- **Storage:** S3-compatible object storage for attachments and generated exports
-- **Jobs:** isolated PDF/DOCX conversion workers
+## Architecture (Planned)
 
-The current presence and version controls are interactive UI prototypes. Real multi-user synchronization requires the sync service, awareness protocol, authentication, and durable update log described above.
+- **Frontend:** Next.js (React) — this editor dashboard
+- **Sync Engine:** Rust service using Axum WebSockets for real-time operational transforms
+- **Database:** PostgreSQL for documents, comments, and version history
+- **Storage:** S3-compatible for document snapshots
+
+## Status
+
+Frontend collaboration UI prototype. The editor interface, comments panel, version history, and presence indicators are fully built. Ready for real-time sync backend integration.
